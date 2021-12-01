@@ -25,13 +25,13 @@ namespace PlatformService
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            if (_env.IsProduction())
-            {
-                Console.WriteLine("--> Using SqlServer Db");
-                services.AddDbContext<AppDbContext>(opt =>
-                    opt.UseSqlServer(Configuration.GetConnectionString("PlatformsConn")));
-            }
-            else
+            //if (_env.IsProduction())
+            //{
+            //    Console.WriteLine("--> Using SqlServer Db");
+            //    services.AddDbContext<AppDbContext>(opt =>
+            //        opt.UseSqlServer(Configuration.GetConnectionString("PlatformsConn")));
+            //}
+            //else
             {
                 Console.WriteLine("--> Using InMem Db");
                 services.AddDbContext<AppDbContext>(opt =>
