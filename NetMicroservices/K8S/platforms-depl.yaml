@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+# metadata:name...jyst a given name
+metadata:
+  name: platforms-depl
+# spec for our pod
+spec:
+  replicas: 1
+  # selector: simply select a template defined below
+  selector:
+    matchLabels:
+      app: platformservice
+  # template define the pod and container we will be deploying
+  template:
+    metadata:
+      labels:
+        app: platformservice
+    # container specs
+    spec:
+      containers:
+        - name: platformservice
+          # docker hub image
+          image: nickgaudreau/platformservice:latest
