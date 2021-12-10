@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: platformnpservice-srv
+spec:
+  type: NodePort
+  selector:
+    # this to match our yaml deployment app selector/template name
+    app: platformservice
+  ports:
+  # The name of this port within the service. 
+  # This must be a DNS_LABEL. 
+  # All ports within a ServiceSpec must have unique names. 
+  # When considering the endpoints for a Service, this must match the 'name' field in the EndpointPort. 
+  # Optional if only one ServicePort is defined on this service.
+    - name: platformservice
+      protocol: TCP
+      port: 80
+      targetPort: 80
