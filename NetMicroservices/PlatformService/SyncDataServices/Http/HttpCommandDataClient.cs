@@ -35,7 +35,7 @@ namespace PlatformService.SyncDataServices.Http
             }
             else
             {
-                Console.WriteLine("--> Sync POST to CommandService was NOT OK!");
+                Console.WriteLine($"--> Sync POST to CommandService FAILED: {response.StatusCode}");
             }
         }
     }
