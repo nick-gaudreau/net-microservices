@@ -21,3 +21,17 @@ spec:
         - name: platformservice
           # docker hub image
           image: nickgaudreau/platformservice:latest
+--- #Make sure to separate the deployment config with --- from the cluster IP config (could also use a different file)
+apiVersion: v1
+kind: Service
+metadata:
+  name: platforms-clusterip-srv
+spec:
+  type: ClusterIP
+  selector:
+    app: platformservice # Match our above spec selector
+  ports:
+  - name: platformservice
+    protocol: TCP
+    port: 80
+    targetPort: 80
