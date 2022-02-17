@@ -15,7 +15,7 @@ namespace CommandsService.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            // This load them every time - eager load, whereas using .include() in some linQ query lazy load them 
+            // This load them every time - eager load, whereas using .include() in some linQ load them on request
             modelBuilder
                 .Entity<Platform>()
                 .HasMany(p => p.Commands)

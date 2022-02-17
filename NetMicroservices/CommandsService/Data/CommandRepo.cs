@@ -54,7 +54,7 @@ namespace CommandsService.Data
         {
             return _context.Commands
                 .Where(c => c.PlatformId == platformId)
-                .OrderBy(c => c.Platform.Name);
+                .OrderBy(c => c.Platform.Name); // no need for include as they are eager loaded in app db context
         }
 
         public bool PlaformExits(int platformId)
