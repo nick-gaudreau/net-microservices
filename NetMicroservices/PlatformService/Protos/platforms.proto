@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+option csharp_namespace = "PlatformService";
+
+// define here the servic or method the client will call
+service GrpcPlatform {
+    // Service name GetAllPlatforms, does the GetAllRequest, and returns,..
+    rpc GetAllPlatforms (GetAllRequest) returns (PlatformResponse);
+}
+
+message GetAllRequest {}
+
+// model structure
+message GrpcPlatformModel{
+    int32 platformId = 1; // 1 here is the proto model property  positions
+    string name = 2; // 2  here is the proto model property position
+    string publisher = 3;
+}
+
+// this is what we return 
+message PlatformResponse {
+    // repeated is for a list... as in a list of above model
+    repeated GrpcPlatformModel platform = 1;
+}
+
