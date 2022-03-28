@@ -1,6 +1,7 @@
 using CommandsService.AsyncDataServices;
 using CommandsService.Data;
 using CommandsService.EventProcessing;
+using CommandsService.SyncDataServices.Grpc;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -37,6 +38,7 @@ namespace CommandsService
             services.AddSingleton<IEventProcessor, EventProcessor>();
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             services.AddScoped<ICommandRepo, CommandRepo>();
+            services.AddScoped<IPlatformDataClient, PlatformDataClient>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -63,6 +65,8 @@ namespace CommandsService
             {
                 endpoints.MapControllers();
             });
+
+            PrepDb.PrepPopulation(app);
         }
     }
 }
